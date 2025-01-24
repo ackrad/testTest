@@ -60,10 +60,13 @@ public class BubbleCreator : MonoBehaviour
     
     private void StopBlowingUpBubble()
     {
-        PhysicsMaterial2D mat = new PhysicsMaterial2D();
-        mat.bounciness = bouncerObjectTransform.localScale.x * scaleToBouncinessFactor;
-        bouncerObjectTransform.GetComponent<Rigidbody2D>().sharedMaterial = mat;
-        bouncerObjectTransform = null;
+        if (bouncerObjectTransform != null)
+        {
+            PhysicsMaterial2D mat = new PhysicsMaterial2D();
+            mat.bounciness = bouncerObjectTransform.localScale.x * scaleToBouncinessFactor;
+            bouncerObjectTransform.GetComponent<Rigidbody2D>().sharedMaterial = mat;
+            bouncerObjectTransform = null;
+        }
     }
     
     

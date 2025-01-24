@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,13 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private Dropper dropperPrefab;
     [SerializeField] private Catcher catcherPrefab;
-    
-    
+
+
+    private void Start()
+    {
+        LoadLevel(0);
+    }
+
     public void LoadLevel(int levelIndex)
     {
         LevelData level = levels[levelIndex];
@@ -22,16 +28,25 @@ public class LevelManager : MonoBehaviour
         
         foreach (var t in ballDropPoints)
         {
-            Dropper dropper = Instantiate(dropperPrefab);
+            Dropper dropper = Instantiate(dropperPrefab,transform);
             dropper.transform.position = t;
         }
         
         foreach (var t in ballTargetPoints)
         {
-            Catcher catcher = Instantiate(catcherPrefab);
+            Catcher catcher = Instantiate(catcherPrefab,transform);
             catcher.transform.position = t;
         }
         
         
+    }
+    
+    
+    private void ClearLevel()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
