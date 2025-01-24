@@ -38,6 +38,11 @@ public class Catcher : MonoBehaviour
             ballsCaught++;
             SetText();
             
+            if (ballsCaught >= ballsToCatch)
+            {
+                GetComponentInParent<LevelManager>().CatcherFull();
+            }
+            
         }
     }
 }

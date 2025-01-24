@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -11,6 +12,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Dropper dropperPrefab;
     [SerializeField] private Catcher catcherPrefab;
 
+    private int levelCatcherCount = 0;
+
+    private int currentLevelIndex = 0;
 
     private void Start()
     {
@@ -19,11 +23,36 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel(int levelIndex)
     {
+        ClearLevel();
         LevelData level = levels[levelIndex];
-        Instantiate(level.levelPrefab);
+        GameObject instantiatedPrefab= Instantiate(level.levelPrefab, transform);
         GameController.Instance.SetValues(level.BubbleCount);
-        
+        levelCatcherCount = instantiatedPrefab.GetComponentsInChildren<Catcher>().ToList().Count;
+        GameController.Instance.StartLevel();
     }
+    
+    
+    public void NextLevel()
+    {
+        currentLevelIndex++;
+        
+        if (currentLevelIndex < levels.Count)
+        {
+            LoadLevel(currentLevelIndex);
+        }
+    }
+    
+    public void CatcherFull()
+    {
+        levelCatcherCount--;
+        if (levelCatcherCount == 0)
+        {
+            if (!GameController.Instance.IsGamePlaying()) return;
+            GameController.Instance.WinLevel();
+
+        }
+    }
+    
     
     
     private void ClearLevel()

@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
     // Get these datas from level
     private int bubbleCount = 0;
     private static GameController instance;
+
+    private bool isGamePlaying = false;
     
     public static GameController Instance
     {
@@ -67,13 +69,43 @@ public class GameController : MonoBehaviour
     
     public void BallOutOfBounds()
     {
-        Debug.Log("Ball out of bounds");
+        LoseLevel();
     }
  
+    
+    private void LoseLevel()
+    {
+        EndLevel();
+        Debug.Log("Level lost");
+    }
+    
+    public void WinLevel()
+    {
+        EndLevel();
+        Debug.Log("Level won");
+    }
+    
     
     public void BubbleCreated()
     {
         bubbleCount--;
         ActionManager.OnBubbleCountChanged?.Invoke(bubbleCount);
+    }
+    
+    public void StartLevel()
+    {
+        isGamePlaying = true;
+    }
+    
+    public void EndLevel()
+    {
+        isGamePlaying = false;
+    }
+    
+    
+    
+    public bool IsGamePlaying()
+    {
+        return isGamePlaying;
     }
 }
