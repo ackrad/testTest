@@ -21,23 +21,7 @@ public class LevelManager : MonoBehaviour
     {
         LevelData level = levels[levelIndex];
         Instantiate(level.levelPrefab);
-        GameController.Instance.SetValues(level.BubbleCount, level.BallCount);
-        
-        List<Vector3> ballDropPoints = level.ballDropPoints;
-        List<Vector3> ballTargetPoints = level.ballTargetPoints;
-        
-        foreach (var t in ballDropPoints)
-        {
-            Dropper dropper = Instantiate(dropperPrefab,transform);
-            dropper.transform.position = t;
-        }
-        
-        foreach (var t in ballTargetPoints)
-        {
-            Catcher catcher = Instantiate(catcherPrefab,transform);
-            catcher.transform.position = t;
-        }
-        
+        GameController.Instance.SetValues(level.BubbleCount);
         
     }
     

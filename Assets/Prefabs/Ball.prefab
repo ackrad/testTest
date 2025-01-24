@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6713103110990059832}
   - component: {fileID: 8951179623330481063}
   - component: {fileID: 4157096440757817127}
+  - component: {fileID: 9025957135924052396}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -148,3 +149,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &9025957135924052396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8537407584224887592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5da5bde6f6e54148aab3cc1ef827398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 731061307, guid: 230bd157f0cb74c46ae487e892f31b02, type: 3}
+  - {fileID: -1508046297, guid: 230bd157f0cb74c46ae487e892f31b02, type: 3}
+  - {fileID: 783413372, guid: 230bd157f0cb74c46ae487e892f31b02, type: 3}
+  - {fileID: -1039540756, guid: 230bd157f0cb74c46ae487e892f31b02, type: 3}
+  - {fileID: 493449259, guid: 230bd157f0cb74c46ae487e892f31b02, type: 3}
+  - {fileID: 197029256, guid: 230bd157f0cb74c46ae487e892f31b02, type: 3}

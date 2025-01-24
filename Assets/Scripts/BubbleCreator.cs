@@ -78,6 +78,7 @@ public class BubbleCreator : MonoBehaviour
         bouncerObjectTransform = bounce.transform;
         
         bouncerObjectTransform.localScale = Vector3.zero;
+        GameController.Instance.BubbleCreated();
 
     }
 }

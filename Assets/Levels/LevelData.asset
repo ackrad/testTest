@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaed1f0a09adc449bd2dd3739f4f1f5, type: 3}
   m_Name: LevelData
   m_EditorClassIdentifier: 
-  ballDropPoints:
-  - {x: 0, y: 0, z: 0}
-  ballTargetPoints: []
-  BubbleCount: 0
-  BallCount: 0
-  levelPrefab: {fileID: 0}
+  BubbleCount: 3
+  levelPrefab: {fileID: 9101725709221787234, guid: 4f542f08b299a744fbd9a052b0e3c4c7, type: 3}

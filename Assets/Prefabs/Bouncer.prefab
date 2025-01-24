@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5302983888227949543}
   - component: {fileID: 2331479410004038233}
   - component: {fileID: 6812372733548158381}
+  - component: {fileID: 9013252301500939769}
   m_Layer: 0
   m_Name: Bouncer
   m_TagString: Untagged
@@ -46,6 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae156821c8f9ac4da48cb96a6570ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteTest: {fileID: 9013252301500939769}
+  timeToChangeSprite: 0.2
+  popParticlePrefab: {fileID: 6619876394410921143, guid: 4bcdc688633df7044981779e6220f102, type: 3}
 --- !u!50 &6812372733548158381
 Rigidbody2D:
   serializedVersion: 4
@@ -73,6 +77,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9013252301500939769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252115405687111005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0765c1737de3f0945b6ca797519f0768, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1753651738, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: -1226570932, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: -320373325, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: 1547688764, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: -1983722963, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: -1412280668, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: -63040473, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  - {fileID: 532870642, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
 --- !u!1 &395762167657880255
 GameObject:
   m_ObjectHideFlags: 0

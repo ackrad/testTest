@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour
 {
     // Get these datas from level
     private int bubbleCount = 0;
-    private int ballCount = 0;
     private static GameController instance;
     
     public static GameController Instance
@@ -35,10 +34,10 @@ public class GameController : MonoBehaviour
     }
     
     
-    public void SetValues(int bubbleCountForLevel, int ballCountForLevel)
+    public void SetValues(int bubbleCountForLevel)
     {
         bubbleCount = bubbleCountForLevel;
-        ballCount = ballCountForLevel;
+        ActionManager.OnBubbleCountChanged?.Invoke(bubbleCount);
     }
     
     public void BubbleBlownUp()
@@ -50,13 +49,11 @@ public class GameController : MonoBehaviour
         }
     }
     
-    public void BallDropped()
+ 
+    public void BallCaught()
     {
-        ballCount--;
         
     }
-    
-    
     
     public int GetBubbleCount()
     {
@@ -68,4 +65,15 @@ public class GameController : MonoBehaviour
         bubbleCount++;
     }
     
+    public void BallOutOfBounds()
+    {
+        Debug.Log("Ball out of bounds");
+    }
+ 
+    
+    public void BubbleCreated()
+    {
+        bubbleCount--;
+        ActionManager.OnBubbleCountChanged?.Invoke(bubbleCount);
+    }
 }
