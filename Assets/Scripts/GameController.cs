@@ -76,13 +76,13 @@ public class GameController : MonoBehaviour
     private void LoseLevel()
     {
         EndLevel();
-        Debug.Log("Level lost");
+        ActionManager.OnLevelFailed?.Invoke();
     }
     
     public void WinLevel()
     {
         EndLevel();
-        Debug.Log("Level won");
+        ActionManager.OnLevelCompleted?.Invoke();
     }
     
     

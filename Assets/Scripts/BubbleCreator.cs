@@ -15,6 +15,9 @@ public class BubbleCreator : MonoBehaviour
     void Start()
     {
         gameController = GameController.Instance;
+        ActionManager.OnLevelLoaded += ClearAllBubbles;
+        
+        
     }
 
     // Update is called once per frame
@@ -70,11 +73,20 @@ public class BubbleCreator : MonoBehaviour
     }
     
     
+    private void ClearAllBubbles()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    
+    
     private void CreateBubbleAtMousePosition()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        Rigidbody2D bounce = Instantiate(bouncerObject, mousePos, Quaternion.identity);
+        Rigidbody2D bounce = Instantiate(bouncerObject, mousePos, Quaternion.identity,transform);
         bouncerObjectTransform = bounce.transform;
         
         bouncerObjectTransform.localScale = Vector3.zero;

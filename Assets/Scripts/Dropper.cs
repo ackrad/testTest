@@ -11,6 +11,7 @@ public class Dropper : MonoBehaviour
 
     [SerializeField] private int ballCount = 1;
     TextMeshPro textMeshPro;
+    private bool firstDrop = true;
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,17 @@ public class Dropper : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DropBall();
+            if (GameController.Instance.GetBubbleCount() != 0)
+            {
+                return;
+            }
+            
+            if(firstDrop)
+            {
+
+                StartCoroutine(DropBalls());
+                firstDrop = false;
+            }
             
         }
         
@@ -46,5 +57,14 @@ public class Dropper : MonoBehaviour
         drop.velocity = new Vector2(0, -5);
         ballCount--;
         SetText();
+    }
+    
+    private IEnumerator DropBalls()
+    {
+        while (ballCount > 0)
+        {
+            DropBall();
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

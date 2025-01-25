@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
         GameController.Instance.SetValues(level.BubbleCount);
         levelCatcherCount = instantiatedPrefab.GetComponentsInChildren<Catcher>().ToList().Count;
         GameController.Instance.StartLevel();
+        ActionManager.OnLevelLoaded?.Invoke();
     }
     
     
@@ -40,6 +41,11 @@ public class LevelManager : MonoBehaviour
         {
             LoadLevel(currentLevelIndex);
         }
+    }
+    
+    public void RestartLevel()
+    {
+        LoadLevel(currentLevelIndex);
     }
     
     public void CatcherFull()

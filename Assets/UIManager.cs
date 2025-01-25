@@ -9,12 +9,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject levelFailPanel;
     
     
+    private LevelManager levelManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         ActionManager.OnLevelCompleted += ShowLevelWinPanel;
         ActionManager.OnLevelFailed += ShowLevelFailPanel;
         
+        levelManager = FindObjectOfType<LevelManager>();
+        CloseWinLosePanels();
         
         
     }
@@ -35,9 +39,18 @@ public class UIManager : MonoBehaviour
         levelFailPanel.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void NextLevelButtonPressed()
     {
-        
+        CloseWinLosePanels();
+        levelManager.NextLevel();
+
     }
+    
+    
+    public void RestartLevelButtonPressed()
+    {
+        CloseWinLosePanels();
+        levelManager.RestartLevel();
+    }
+    
 }

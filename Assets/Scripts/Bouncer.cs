@@ -44,10 +44,19 @@ public class Bouncer : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            PopParticle popParticle = Instantiate(popParticlePrefab, transform.position, Quaternion.identity);
-            popParticle.Pop(transform.localScale);
-            
-            Destroy(gameObject);
+            Pop();
         }
+    }
+
+
+    public void Pop()
+    {
+        PopParticle popParticle = Instantiate(popParticlePrefab, transform.position, Quaternion.identity);
+        popParticle.Pop(transform.localScale);
+        ActionManager.OnBubbleBlownUp?.Invoke();
+            
+        Destroy(gameObject);
+        
+        
     }
 }
