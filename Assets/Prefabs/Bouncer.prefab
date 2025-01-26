@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9013252301500939769}
   m_Layer: 0
   m_Name: Bouncer
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,9 @@ MonoBehaviour:
   - {fileID: -1412280668, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
   - {fileID: -63040473, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
   - {fileID: 532870642, guid: cc4850a35d871a64fa9564eabc9f34c3, type: 3}
+  spriteRenderer: {fileID: 0}
+  autoChangeSprite: 0
+  timeToChangeSprite: 0.2
 --- !u!1 &395762167657880255
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +114,7 @@ GameObject:
   - component: {fileID: 4925092152559075631}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: Bubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

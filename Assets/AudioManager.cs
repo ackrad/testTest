@@ -5,8 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private List<AudioClip> popSounds;
-    private AudioSource audioSource;
-    
+    [SerializeField] AudioSource popAudioSource;
+    [SerializeField] AudioSource backgroundAudioSource;
     private static AudioManager instance;
     
     public static AudioManager Instance
@@ -39,15 +39,14 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         ActionManager.OnBubbleBlownUp += PlayPopSound;
     }
     
     private void PlayPopSound()
     {
         int randomIndex = Random.Range(0, popSounds.Count);
-        audioSource.pitch = Random.Range(0.8f, 1.2f);
-        audioSource.PlayOneShot(popSounds[randomIndex]);
+        popAudioSource.pitch = Random.Range(0.8f, 1.2f);
+        popAudioSource.PlayOneShot(popSounds[randomIndex]);
         
     }
 

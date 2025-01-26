@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ public class Catcher : MonoBehaviour
             GameController.Instance.BallCaught();
             ballsCaught++;
             SetText();
+            TextAnimation();
             
             if (ballsCaught >= ballsToCatch)
             {
@@ -44,5 +46,10 @@ public class Catcher : MonoBehaviour
             }
             
         }
+    }
+    
+    private void TextAnimation()
+    {
+        text.transform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.2f, 0, 0.5f).SetEase(Ease.OutSine);
     }
 }

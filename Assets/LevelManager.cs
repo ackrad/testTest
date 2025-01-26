@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class LevelManager : MonoBehaviour
 
     private int currentLevelIndex = 0;
 
+    private List<Rigidbody2D> balls = new List<Rigidbody2D>();
+    
     private void Start()
     {
         LoadLevel(0);
@@ -49,6 +52,11 @@ public class LevelManager : MonoBehaviour
         if (currentLevelIndex < levels.Count)
         {
             LoadLevel(currentLevelIndex);
+        }
+
+        else
+        {
+            SceneManager.LoadScene(2);
         }
     }
     
@@ -86,5 +94,13 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+    
+    
+ 
+    
+    public void AddBall(Rigidbody2D ball)
+    {
+        balls.Add(ball);
     }
 }

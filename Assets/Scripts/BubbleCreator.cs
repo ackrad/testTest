@@ -13,6 +13,8 @@ public class BubbleCreator : MonoBehaviour
     GameController gameController;
     private int bubbleCount = 0;
     
+    private List<Bouncer> bouncers = new List<Bouncer>();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +29,20 @@ public class BubbleCreator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(gameController.GetBubbleCount() == 0)
-                return;
-            
-            CreateBubbleAtMousePosition();
+
+            if (IsThereABubbleAtMousePointer())
+            {
+            }
+
+            else
+            {
+                if (gameController.GetBubbleCount() == 0)
+                    return;
+
+
+
+                CreateBubbleAtMousePosition();
+            }
         }
 
         if (Input.GetMouseButton(0))
@@ -47,6 +59,9 @@ public class BubbleCreator : MonoBehaviour
         
         
     }
+    
+    
+    
 
     private void BlowUpBubble()
     {
@@ -95,6 +110,30 @@ public class BubbleCreator : MonoBehaviour
         return bubbleCount;
     }
     
+    private bool IsThereABubbleAtMousePointer()
+    {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        bool isThereABubble = false;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, 0.1f);
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("Bubble"))
+            {
+                collider.GetComponentInParent<Bouncer>().PopOutOfGame();
+                bubbleCount--;
+                isThereABubble = true;
+                gameController.BubblePickedUp();
+                
+            }
+        }
+
+        
+        return isThereABubble;
+    }
+    
+    
+    
     private void CreateBubbleAtMousePosition()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -105,6 +144,7 @@ public class BubbleCreator : MonoBehaviour
         bouncerObjectTransform.localScale = Vector3.zero;
         GameController.Instance.BubbleCreated();
         bubbleCount++;
+        bouncers.Add(bounce.GetComponent<Bouncer>());
 
     }
 }

@@ -14,6 +14,8 @@ public class Dropper : MonoBehaviour
     TextMeshPro textMeshPro;
     private bool firstDrop = true;
     
+    private List<Rigidbody2D> balls = new List<Rigidbody2D>();
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +59,7 @@ public class Dropper : MonoBehaviour
         
         transform.DOPunchPosition(new Vector3(0, 0.2f, 0), 0.2f, 0, 0.5f).SetEase(Ease.OutSine);
         
-        Rigidbody2D drop = Instantiate(dropObject, posToDrop.position, Quaternion.identity);
+        Rigidbody2D drop = Instantiate(dropObject, posToDrop.position, Quaternion.identity,transform.parent);
         drop.velocity = new Vector2(0, -5);
         ballCount--;
         SetText();
@@ -71,4 +73,6 @@ public class Dropper : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+    
+   
 }

@@ -54,10 +54,24 @@ public class Bouncer : MonoBehaviour
         PopParticle popParticle = Instantiate(popParticlePrefab, transform.position, Quaternion.identity);
         popParticle.Pop(transform.localScale);
         ActionManager.OnBubbleBlownUp?.Invoke();
-        GetComponentInParent<BubbleCreator>().BubbleBlownUp();
-            
+        BubbleCreator bubbleCreator = GetComponentInParent<BubbleCreator>();
+
+        if (bubbleCreator != null)
+        {
+           bubbleCreator.BubbleBlownUp();
+        }
+
         Destroy(gameObject);
         
         
     }
+    
+    
+    
+    public void PopOutOfGame()
+    {
+        PopParticle popParticle = Instantiate(popParticlePrefab, transform.position, Quaternion.identity);
+        popParticle.Pop(transform.localScale);
+        ActionManager.OnBubbleBlownUp?.Invoke();
+        Destroy(gameObject);    }
 }

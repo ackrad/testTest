@@ -78,4 +78,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomTimeRange: {x: 0.5, y: 2}
-  randomFloatSpeedRange: {x: 2, y: 8}
+  randomFloatSpeedRange: {x: 2, y: 16}

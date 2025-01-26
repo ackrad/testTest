@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bouncerObject: {fileID: 6812372733548158381, guid: 79fd8acf1565b7545b96c7e68a6ff172, type: 3}
-  scaleSpeed: 4
+  scaleSpeed: 6
+  scaleToBouncinessFactor: 0.5

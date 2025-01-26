@@ -83,6 +83,12 @@ public class GameController : MonoBehaviour
         ActionManager.OnBubbleCountChanged?.Invoke(bubbleCount);
     }
     
+    public void BubblePickedUp()
+    {
+        bubbleCount++;
+        ActionManager.OnBubbleCountChanged?.Invoke(bubbleCount);
+    }
+    
     public void StartLevel()
     {
         isGamePlaying = true;
@@ -103,4 +109,7 @@ public class GameController : MonoBehaviour
     {
         return isGamePlaying;
     }
+    
+    
+   
 }
