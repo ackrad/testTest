@@ -61,6 +61,8 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Ball Out of Bounds");
         LoseLevel();
+        FindObjectOfType<LevelLostPanel>().SetText("Ball fell out :(");
+
     }
  
     
@@ -103,6 +105,8 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Not all bubbles popped");
         LoseLevel();
+        FindObjectOfType<LevelLostPanel>().SetText("All bubbles need to be popped!");
+
     }
     
     public bool IsGamePlaying()
