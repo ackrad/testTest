@@ -29,10 +29,12 @@ public class LevelManager : MonoBehaviour
         ClearLevel();
         LevelData level = levels[levelIndex];
         GameObject instantiatedPrefab= Instantiate(level.levelPrefab, transform);
-        GameController.Instance.SetValues(level.BubbleCount);
         levelCatcherCount = instantiatedPrefab.GetComponentsInChildren<Catcher>().ToList().Count;
-        GameController.Instance.StartLevel();
         ActionManager.OnLevelLoaded?.Invoke();
+        GameController.Instance.SetValues(level.BubbleCount);
+        GameController.Instance.StartLevel();
+
+
     }
 
 
