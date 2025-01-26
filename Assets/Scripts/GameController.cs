@@ -42,14 +42,7 @@ public class GameController : MonoBehaviour
         ActionManager.OnBubbleCountChanged?.Invoke(bubbleCount);
     }
     
-    public void BubbleBlownUp()
-    {
-        bubbleCount--;
-        if (bubbleCount == 0)
-        {
-            Debug.Log("Level completed");
-        }
-    }
+    
     
  
     public void BallCaught()
@@ -62,13 +55,11 @@ public class GameController : MonoBehaviour
         return bubbleCount;
     }
     
-    public void IncreaseBubbleCount()
-    {
-        bubbleCount++;
-    }
+  
     
     public void BallOutOfBounds()
     {
+        Debug.Log("Ball Out of Bounds");
         LoseLevel();
     }
  
@@ -102,7 +93,11 @@ public class GameController : MonoBehaviour
         isGamePlaying = false;
     }
     
-    
+    public void NotAllBubblesPopped()
+    {
+        Debug.Log("Not all bubbles popped");
+        LoseLevel();
+    }
     
     public bool IsGamePlaying()
     {

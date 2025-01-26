@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -53,6 +54,9 @@ public class Dropper : MonoBehaviour
     
     private void DropBall()
     {
+        
+        transform.DOPunchPosition(new Vector3(0, 0.2f, 0), 0.2f, 0, 0.5f).SetEase(Ease.OutSine);
+        
         Rigidbody2D drop = Instantiate(dropObject, posToDrop.position, Quaternion.identity);
         drop.velocity = new Vector2(0, -5);
         ballCount--;

@@ -11,6 +11,8 @@ public class BubbleCreator : MonoBehaviour
     
     [SerializeField] private float scaleToBouncinessFactor = 0.8f;
     GameController gameController;
+    private int bubbleCount = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -75,12 +77,23 @@ public class BubbleCreator : MonoBehaviour
     
     private void ClearAllBubbles()
     {
+        bubbleCount = 0;
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
     }
     
+    public void BubbleBlownUp()
+    {
+        bubbleCount--;
+        
+    }
+    
+    public int GetBubbleCount()
+    {
+        return bubbleCount;
+    }
     
     private void CreateBubbleAtMousePosition()
     {
@@ -91,6 +104,7 @@ public class BubbleCreator : MonoBehaviour
         
         bouncerObjectTransform.localScale = Vector3.zero;
         GameController.Instance.BubbleCreated();
+        bubbleCount++;
 
     }
 }

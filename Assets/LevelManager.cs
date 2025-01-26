@@ -31,8 +31,17 @@ public class LevelManager : MonoBehaviour
         GameController.Instance.StartLevel();
         ActionManager.OnLevelLoaded?.Invoke();
     }
-    
-    
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RestartLevel();
+        }
+    }
+
+
     public void NextLevel()
     {
         currentLevelIndex++;
@@ -54,6 +63,16 @@ public class LevelManager : MonoBehaviour
         if (levelCatcherCount == 0)
         {
             if (!GameController.Instance.IsGamePlaying()) return;
+            
+            BubbleCreator bubbleCreator = FindObjectOfType<BubbleCreator>();
+            
+            if (bubbleCreator.GetBubbleCount() != 0)
+            {
+                GameController.Instance.NotAllBubblesPopped();
+                return;
+            }
+            
+            
             GameController.Instance.WinLevel();
 
         }

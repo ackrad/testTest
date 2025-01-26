@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LevelData 3
   m_EditorClassIdentifier: 
   BubbleCount: 2
-  levelPrefab: {fileID: 9101725709221787234, guid: e320f9c7cb7fe414595b5aedacf16b48, type: 3}
+  levelPrefab: {fileID: 9101725709221787234, guid: 506f60c59c6980946b3b96f314d8fe49, type: 3}
